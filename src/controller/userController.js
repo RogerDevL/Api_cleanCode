@@ -32,8 +32,63 @@ const userController = {
             });
         }
     },
-    
+    getAll:async(req, res) =>{
+        try {
+            const users = await userService.getAll();
 
+            return res.status(200).json({
+                msg:"Todos os usuarios",
+                users
+            })
+        } catch (error) {
+            return res.status(500).json({
+                msg:"Ocorreu um erro no servidor!"
+            });
+        }
+    },
+    getOne: async(req, res) =>{
+        try {
+            const user = await userService.getById(req.params.id)
+
+            if(!user){
+                return res.status(400).json({
+                    msg:"User nao encontrado"
+                })
+            }
+
+            return res.status(200).json({
+                msg:"usuario encontrado",
+                user
+            });
+
+
+
+        } catch (error) {
+            return res.status(500).json({
+                msg:"Ocorreu um erro no servidor!"
+            });
+        }
+    },
+    delete: async(req,res) =>{
+        try {
+            const user = await userService.delete(req.params.id)
+
+            if(!user){
+                return res.status(400).json({
+                    msg:"Usuario nao encontrado!"
+                });
+            }
+
+            return res.status(200).json({
+                msg:"usuario deletado com sucesso"
+            });
+
+        } catch (error) {
+            return res.status(500).json({
+                msg:"ocorreu um erro no servidor"
+            })
+        }
+    },
 }
 
 module.exports = userController;

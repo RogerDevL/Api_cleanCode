@@ -8,7 +8,7 @@ const db = [];
 // dir --> Listar todos os arquivos do diretorio
 fs.readdirSync(__dirname)
     .filter(file => file !== 'index.js')
-    .forEach(file =>{
+    .forEach(file => {
 
         // capturando cada arquivo individualmente 
         const model = require(path.join(__dirname, file));
