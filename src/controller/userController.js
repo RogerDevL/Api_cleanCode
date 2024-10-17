@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs/dist/bcrypt");
 const userService = require("../services/userServices")
 
 const userController = {
@@ -14,7 +15,7 @@ const userController = {
             })
         }
     },
-    update: async (req, res) =>{
+    update: async (req, res) => {
         try {
             const user = await userService.update(req.params.id, req.body);
             if(!user){

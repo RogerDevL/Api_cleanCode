@@ -3,6 +3,13 @@ const User = require("../models/user")
 // app.js -> router.js -> userRotasjs -> userController.js
 //-> userServices -> model -> DATABSE
 const userService ={
+    login: async (user) =>{
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
     create: async (user) =>{
         try {
             return await User.create(user);
