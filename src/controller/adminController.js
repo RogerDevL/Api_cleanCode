@@ -3,18 +3,12 @@ const adminService = require("../services/adminServcies")
 const adminController ={
     create: async(req, res) =>{
         try {
-            const {nome, email, senha} = req.body;
             const admin = await adminService.create(req.body);
 
-            if(!nome || !email || !senha){
-                return res.status(400).json({
-                    msg:"Dados inválidos."
-                })
-            }
-
+            
             return res.status(200).json({
                 msg:"Admin Criado",
-                admin
+                admin   
             })
         } catch (error) {
             return res.status(500).json({
@@ -37,6 +31,27 @@ const adminController ={
         } catch (error) {
             return res.status(500).json({
                 msg:"Erro ao atualizar admin."
+            })
+        }
+    },
+    login: async(req, res) =>{
+        try {
+            const admin = await adminService.login(req.body);
+            
+            if(!admin){
+                return res.status(400).json({
+                    msg:"Admin inexistente!"
+                })
+            }
+
+            return res.status(200).json({
+                msg:"Login realizado",
+                admin
+            })
+            
+        } catch (error) {
+            return res.status(500).json({
+                msg:"Erro ao fazer login."
             })
         }
     },

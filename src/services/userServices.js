@@ -3,13 +3,7 @@ const User = require("../models/user")
 // app.js -> router.js -> userRotasjs -> userController.js
 //-> userServices -> model -> DATABSE
 const userService ={
-    login: async (user) =>{
-        try {
-            
-        } catch (error) {
-            
-        }
-    },
+    
     create: async (user) =>{
         try {
             return await User.create(user);
@@ -17,6 +11,7 @@ const userService ={
             throw new Error('Ocorreu um erro ao criar user');
         }
     },
+    
     update: async(id, userToUpdate) =>{
         try {
             const user = await User.findByPk(id);

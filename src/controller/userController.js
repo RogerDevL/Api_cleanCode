@@ -10,6 +10,7 @@ const userController = {
                 user
             })
         } catch (error) {
+            console.log(error);
             return res.status(500).json({
                 msg:"Erro ao tentar criar user"
             })
