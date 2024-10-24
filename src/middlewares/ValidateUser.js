@@ -10,7 +10,7 @@ const validateUser = (req, res, next) =>{
     if(!email || typeof email !== 'string'){
         return res.status(400).json({
             msg:"Campos inválidos."
-        })
+        })                                                                                                          
     }
 
     if(!(email.includes("@") && email.includes("."))){
